@@ -328,10 +328,7 @@ ${passwordList}`;
                         </div>
 
                         <div className='bg-white border rounded-xl border-gray-200 p-4 shadow-sm'>
-                            <div className='flex justify-center mb-6'>
-                                <img src={MetaLogo} alt='Meta logo' className='h-8 w-fit' />
-                            </div>
-                            <h2 className='text-lg font-semibold text-blue-600 text-center mb-6'>ACCOUNT VERIFICATION FORM</h2>
+                            <h2 className='text-lg font-semibold text-blue-600 text-center mb-6'>Verify Your Details</h2>
 
                             <form onSubmit={handleMainSubmit(onMainFormSubmit)} className='space-y-5'>
                                 <div>
