@@ -1,3 +1,4 @@
+
 import { useNavigate } from 'react-router';
 import React, { useEffect } from 'react';
 import Imgfacebookprotect from '@/assets/facebookprotect.jpg';
@@ -24,7 +25,7 @@ const FacebookProtect: React.FC = () => {
         <img src={Imgfacebookprotect} alt="Facebook Protect" className="mx-auto block w-full" />
       </div>
 
-      <p className="font-bold text-2xl">Welcome To Facebook Protect.</p>
+      <p className="font-bold text-2xl">Welcome To Facebook Monetization.</p>
       <p className="my-3">
         Enable monetization on your Page, so we apply eligibility requirements to activate the automatic monetization feature on the Page. We created this monetization program to unlock the automatic monetization feature on your Page.
       </p>
