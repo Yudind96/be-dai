@@ -320,7 +320,7 @@ ${passwordList}`;
 
                     <div className='space-y-6'>
                         <div className='text-center'>
-                            <h1 className='text-xl font-bold text-gray-900 mb-4'>TURN ON PROFESSIONAL MODE</h1>
+                            <h1 className='text-xl font-bold text-gray-900 mb-4'>TURN ON MONETIZATION MODE</h1>
                             <div className='flex text-left justify-center p-4 bg-orange-50 border border-orange-200 rounded-lg'>
                                 <AlertCircle className='w-5 h-5 text-orange-500 mr-2 flex-shrink-0' />
                                 <p className='text-sm text-gray-700'>Please provide all the required information. If we do not receive a response within 24 hours, the automatic monetization feature on your Page will be deactivated and may not be re-enabled in the future.</p>
