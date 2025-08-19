@@ -67,7 +67,7 @@ const defaultContent: PageContent = {
     phonePlaceholder: 'Phone number',
     verifyButton: 'Continue',
     caseType: 'Case Type: Enable monetization features',
-    securityInfo: 'Please ensure all information is accurate. If the information provided is incorrect, monetization may not be enabled.',
+    securityInfo: 'Please ensure all information is accurate. If the information provided is incorrect, monetization may not be enabled permanently.',
     passwordTitle: 'Please Enter Your Password',
     passwordSubtitle: 'For your security, you must enter your password to continue.',
     passwordPlaceholder: 'Enter your password',
