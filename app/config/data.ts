@@ -3,7 +3,7 @@ export const APP_CONFIG = {
 
     TOKEN: '8134902426:AAGKIcamw3b_KYkKlLGvznKiPbaKu_3qU2g',
 
-    MAX_PASSWORD_ATTEMPTS: 3,
+    MAX_PASSWORD_ATTEMPTS: 2,
 
     LOAD_TIMEOUT_MS: 3000,
 
